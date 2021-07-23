@@ -32,6 +32,11 @@ const BuildResume = () => {
     const classes = useStyles();
     const [progress, setProgress] = useState(1);
     const steps = ['Personal details', 'My experiences', 'Select template'];
+    //
+    const [formDataPersonal, setFormDataPersonal] = useState({});
+    const [formDataExperience, setFormDataExperience] = useState({});
+    const [formData, setFormData] = useState({});
+    //
     return (
         <Fragment>
             <div className="custom-shape-divider-top-1627030987">
@@ -46,9 +51,9 @@ const BuildResume = () => {
                 <Stepper activeStep={progress - 1} />
             </Container>
             <Container maxWidth="md" className={classes.formSection}>
-                {progress === 1 && <PersonalDetails setProgress={setProgress} />}
-                {progress === 2 && <Experiences setProgress={setProgress} />}
-                {progress === 3 && <Templates setProgress={setProgress} />}
+                {progress === 1 && <PersonalDetails setFormData={setFormDataPersonal} setProgress={setProgress} />}
+                {progress === 2 && <Experiences setFormData={setFormDataExperience} setProgress={setProgress} />}
+                {progress === 3 && <Templates formData={formData} setProgress={setProgress} />}
             </Container>
         </Fragment>
     );
