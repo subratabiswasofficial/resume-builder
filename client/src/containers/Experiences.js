@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -17,6 +17,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ExperienceModal from './ExperienceModal';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,12 +52,13 @@ const useStylesAccordian = makeStyles((theme) => ({
 export default function CenteredGrid({ setProgress }) {
     const classes = useStyles();
     const accodianClasses = useStylesAccordian();
-
+    const [openModal,setModal] = useState(false);
     const [html, setHtml] = React.useState('Add <b>Something</b>');
     function onChange(e) {
         setHtml(e.target.value);
     }
     return (
+        <>
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -73,7 +75,9 @@ export default function CenteredGrid({ setProgress }) {
                                         <DefaultEditor value={html} onChange={onChange} />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <Button style={{ float: 'left' }} variant="outlined" color="default" disableElevation>
+                                        <Button style={{ float: 'left' }} variant="outlined" color="default" disableElevation 
+                                        onClick={()=>setModal(!openModal)}
+                                        >
                                             <HelpOutlineIcon className={accodianClasses.buttonIcon} /> Tips
                                         </Button>
                                     </Grid>
@@ -323,5 +327,7 @@ export default function CenteredGrid({ setProgress }) {
                 </Grid>
             </Grid>
         </div>
+        <ExperienceModal open={openModal} setOpen={setModal} />
+        </>
     );
 }
