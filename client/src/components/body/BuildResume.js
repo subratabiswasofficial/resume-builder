@@ -33,9 +33,31 @@ const BuildResume = () => {
     const [progress, setProgress] = useState(1);
     const steps = ['Personal details', 'My experiences', 'Select template'];
     //
-    const [formDataPersonal, setFormDataPersonal] = useState({});
-    const [formDataExperience, setFormDataExperience] = useState({});
-    const [formData, setFormData] = useState({});
+    const [personalData, setPersonalData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        number: '',
+        city: '',
+        address: '',
+        zipCode: ''
+    });
+    const [experienceData, setExperienceData] = useState({
+        competencics: '',
+        jobTitle: '',
+        city: '',
+        employer: '',
+        startDate: '',
+        endDate: '',
+        internshipDescription: '',
+        degree: '',
+        school: '',
+        eduCity: '',
+        eduStartDate: '',
+        eduEndDate: '',
+        eduDescription: ''
+    });
+
     //
     return (
         <Fragment>
@@ -51,9 +73,9 @@ const BuildResume = () => {
                 <Stepper activeStep={progress - 1} />
             </Container>
             <Container maxWidth="md" className={classes.formSection}>
-                {progress === 1 && <PersonalDetails setFormData={setFormDataPersonal} setProgress={setProgress} />}
-                {progress === 2 && <Experiences setFormData={setFormDataExperience} setProgress={setProgress} />}
-                {progress === 3 && <Templates formData={formData} setProgress={setProgress} />}
+                {progress === 1 && <PersonalDetails initialFormData={personalData} setParentFormData={setPersonalData} setProgress={setProgress} />}
+                {progress === 2 && <Experiences initialFormData={experienceData} setParentFormData={setExperienceData} setProgress={setProgress} />}
+                {progress === 3 && <Templates personalData={personalData} experienceData={experienceData} setProgress={setProgress} />}
             </Container>
         </Fragment>
     );

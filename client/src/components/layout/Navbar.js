@@ -68,14 +68,6 @@ const Navbar = ({ isAuthenticated, logout }) => {
                             <ListItem
                                 button
                                 onClick={() => {
-                                    history.push('/');
-                                }}
-                            >
-                                <ListItemText primary={'Home'} />
-                            </ListItem>
-                            <ListItem
-                                button
-                                onClick={() => {
                                     history.push('/signin');
                                 }}
                             >
@@ -94,30 +86,6 @@ const Navbar = ({ isAuthenticated, logout }) => {
                 ) : (
                     <Fragment>
                         <List className={classes.drawerList}>
-                            <ListItem
-                                button
-                                onClick={() => {
-                                    history.push('/');
-                                }}
-                            >
-                                <ListItemText primary={'Home'} />
-                            </ListItem>
-                            <ListItem
-                                button
-                                onClick={() => {
-                                    history.push('/myposts');
-                                }}
-                            >
-                                <ListItemText primary={'My Posts'} />
-                            </ListItem>
-                            <ListItem
-                                button
-                                onClick={() => {
-                                    history.push('/editpost');
-                                }}
-                            >
-                                <ListItemText primary={'Add Post'} />
-                            </ListItem>
                             <ListItem
                                 button
                                 onClick={() => {

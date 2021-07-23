@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
+import axios from 'axios';
+import { saveAs } from 'file-saver';
+
 //
 import { template_1, template_2, template_3 } from '../assets';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -88,11 +91,29 @@ const TemplateItem = ({ srcImage, caption, selection, hover, setHover, id, setSe
     );
 };
 
-export default function CenteredGrid({ setProgress }) {
+export default function CenteredGrid({ setProgress, personalData = {}, experienceData = {} }) {
     const classes = useStyles();
     const [selection, setSelection] = useState(0);
     const [hover, setHover] = useState(0);
-
+    const fetchPdfandler = async ({ personalData = {}, experienceData = {}, templateId = 0 } = {}) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            const body = { personalData, experienceData, templateId };
+            await axios.post('/api/resume/create', body, config);
+            const res = axios.get('/api/resume/fetch', { responseType: 'blob' });
+            const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+            saveAs(pdfBlob, 'Resume.pdf');
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    const downloadHandler = async () => {
+        await fetchPdfandler({ personalData, experienceData, templateId: selection });
+    };
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
@@ -115,7 +136,7 @@ export default function CenteredGrid({ setProgress }) {
                     </Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Button variant="outlined" fullWidth color="primary" disableElevation>
+                    <Button variant="outlined" fullWidth color="primary" disableElevation onClick={downloadHandler}>
                         <GetAppIcon className={classes.buttonIcon} />
                         Download
                     </Button>
