@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 require('dotenv').config();
 
-/**  */
+/** pre setups */
 const auth = require('./middleware/auth');
 
 /** connect Database */
@@ -14,8 +14,8 @@ app.use(express.json());
 // app.use(fileUpload());
 
 /** Routes */
-app.use('/api', require('./api/routes/users'));
-app.use('/api', require('./routes/posts'));
+// app.use('/api', require('./api/routes/users'));
+// app.use('/api', require('./routes/posts'));
 
 /** Setup */
 // if (process.env.NODE_ENV === "production") {
@@ -28,7 +28,7 @@ app.use('/api', require('./routes/posts'));
 //   });
 // }
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 4000, () => {
     process.env.PORT ? console.log('Env utilized') : console.log('Env not utilized');
     console.log(`server running on ${process.env.PORT || 5000}`);
 });
