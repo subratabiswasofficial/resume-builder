@@ -3,9 +3,6 @@ const app = express();
 const path = require('path');
 require('dotenv').config();
 
-/** pre setups */
-const auth = require('./middleware/auth');
-
 /** connect Database */
 require('./config/connectDb')();
 
@@ -14,7 +11,7 @@ app.use(express.json());
 // app.use(fileUpload());
 
 /** Routes */
-// app.use('/api', require('./api/routes/users'));
+app.use('/api/auth', require('./routes/user'));
 // app.use('/api', require('./routes/posts'));
 
 /** Setup */
