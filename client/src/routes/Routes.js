@@ -10,16 +10,14 @@ import NotFound from '../components/body/NotFound'; //
 import Register from '../components/body/Register'; //
 import Login from '../components/body/Login'; //
 import ResumeBuilder from '../components/body/BuildResume';
-import PersonalDetails from '../containers/Experiences';
+
 const Routes = () => {
     return (
         <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/signin" component={Login} exact />
             <Route path="/signup" component={Register} exact />
-            {/* <Route path="/resume" component={ResumeBuilder} exact /> */}
-            <Route path="/resume" component={PersonalDetails} exact />
-            {/* <PrivateRoute path="/editpost" component={EditPost} exact /> */}
+            <Route path="/resume" component={ResumeBuilder} exact />
             <Route component={NotFound} />
         </Switch>
     );
