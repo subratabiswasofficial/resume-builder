@@ -12,7 +12,7 @@ app.use(express.json());
 
 /** Routes */
 app.use('/api/auth', require('./routes/user'));
-// app.use('/api', require('./routes/posts'));
+app.use('/api/resume', require('./routes/resume'));
 
 /** Setup */
 // if (process.env.NODE_ENV === "production") {

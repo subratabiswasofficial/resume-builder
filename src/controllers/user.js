@@ -66,21 +66,17 @@ module.exports.loginUser = async (req, res) => {
         }
         // if the password does match
         // --create token
-        jwt.sign(
+        const token = jwt.sign(
             {
                 // make payload
                 user: {
                     id: user.id
                 }
             },
-            process.env.JWT_SECRET,
-            { expiresIn: 360000 },
-            (err, token) => {
-                if (err) throw new Error();
-                // send token
-                return res.status(200).json({ token });
-            }
+            process.env.JWT_KEY,
+            { expiresIn: 360000 }
         );
+        return res.status(200).json({ token });
     } catch (e) {
         return res.status(500).json({ errors: [{ msg: 'Server Error' }] });
     }
