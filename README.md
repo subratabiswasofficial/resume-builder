@@ -76,6 +76,12 @@ npm run build
 
 #
 
-### All task details @ `.txt`
+## Incompleted tasks
 
-### Go [Live](https://simple-text-resume-builder.herokuapp.com/) [GitHub](https://github.com/subratabiswasofficial/resume-builder)
+### Not able to add `email varification`
+
+### Not able to add `multiple internship and education`
+
+#
+
+### App is hosted on heroku, [click here](https://simple-text-resume-builder.herokuapp.com/) to visit.
