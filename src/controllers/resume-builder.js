@@ -1,5 +1,6 @@
 const pdf = require('html-pdf');
 const path = require('path');
+const fs = require('fs');
 
 module.exports.createResume = (req, res) => {
     const templateId = req.body.templateId;
@@ -19,8 +20,9 @@ module.exports.createResume = (req, res) => {
 
 module.exports.fetchPdf = (req, res) => {
     try {
-        const file = path.join(__dirname, '..', '..', 'Resume.pdf');
-        return res.download(file);
+        const fileUrl = path.join(__dirname, '..', '..', 'Resume.pdf');
+        var file = fs.createReadStream(fileUrl);
+        file.pipe(res);
     } catch (err) {
         console.log(err);
         return res.status(500).send('server error');
