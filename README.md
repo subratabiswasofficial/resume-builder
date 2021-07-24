@@ -78,4 +78,4 @@ npm run build
 
 ### All task details @ `.txt`
 
-### Go [Live](https://secret-fortress-95526.herokuapp.com/)
+### Go [Live](https://simple-text-resume-builder.herokuapp.com/) [GitHub](https://github.com/subratabiswasofficial/resume-builder)
