@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Fragment } from 'react';
 import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from './Stepper';
 import '../styles/body/home.css';
-
 import PersonalDetails from '../../containers/PersonalDetails';
 import Experiences from '../../containers/Experiences';
 import Templates from '../../containers/Templates';

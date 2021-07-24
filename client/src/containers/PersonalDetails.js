@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const validateEmail = (email) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+};
+
 export default function CenteredGrid({ setProgress, initialFormData, setParentFormData }) {
     const classes = useStyles();
     const [formData, setFormData] = useState(initialFormData);
@@ -28,33 +33,6 @@ export default function CenteredGrid({ setProgress, initialFormData, setParentFo
             [e.target.name]: e.target.value
         });
     };
-
-    const varifier = [
-        {
-            name: 'firstName',
-            varify: (item) => {
-                return item?.length > 0;
-            }
-        },
-        {
-            name: 'lastName',
-            varify: (item) => {
-                return item?.length > 0;
-            }
-        },
-        {
-            name: 'email',
-            varify: (item) => {
-                return item?.length > 0;
-            }
-        },
-        {
-            name: 'number',
-            varify: (item) => {
-                return item?.length >= 10;
-            }
-        }
-    ];
 
     const varify = () => {
         let fname = false,
@@ -72,7 +50,7 @@ export default function CenteredGrid({ setProgress, initialFormData, setParentFo
         } else {
             set_formError_lastName(false);
         }
-        if (formData.email?.length === 0) {
+        if (!validateEmail(formData.email)) {
             email = true;
             set_formError_email(true);
         } else {

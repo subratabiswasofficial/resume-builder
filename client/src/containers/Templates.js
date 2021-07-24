@@ -65,7 +65,7 @@ const TemplateItem = ({ srcImage, caption, selection, hover, setHover, id, setSe
         border: '3px solid #6a60e5'
     };
     const hoveredStyle = {
-        border: '3px solid green'
+        border: '3px solid #d500f9'
     };
     return (
         <Grid item xs={12} md={4} xl={4} className={classes.templateGrid}>
@@ -136,7 +136,7 @@ export default function CenteredGrid({ setProgress, personalData = {}, experienc
                     </Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Button variant="outlined" fullWidth color="primary" disableElevation onClick={downloadHandler}>
+                    <Button disabled={selection === 0} variant="outlined" fullWidth color="primary" disableElevation onClick={downloadHandler}>
                         <GetAppIcon className={classes.buttonIcon} />
                         Download
                     </Button>

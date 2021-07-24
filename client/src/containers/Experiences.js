@@ -9,7 +9,6 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Typography } from '@material-ui/core';
-import moment from 'moment';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import SchoolIcon from '@material-ui/icons/School';
