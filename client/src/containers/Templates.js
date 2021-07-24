@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import axios from 'axios';
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
+import fileDownload from 'js-file-download';
 
 //
 import { template_1, template_2, template_3 } from '../assets';
@@ -106,7 +107,7 @@ export default function CenteredGrid({ setProgress, personalData = {}, experienc
             await axios.post('/api/resume/create', body, config);
             const res = axios.get('/api/resume/fetch', { responseType: 'blob' });
             const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
-            saveAs(pdfBlob, 'Resume.pdf');
+            fileDownload(pdfBlob, 'Resume.pdf');
         } catch (err) {
             console.log(err);
         }

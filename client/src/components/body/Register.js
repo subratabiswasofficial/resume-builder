@@ -1,10 +1,8 @@
-// main
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-// ui
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -15,11 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-// externals
 import { register } from '../../actions/auth';
 import { setAlert } from '../../actions/alert';
 
-// css
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(5),
@@ -51,21 +47,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Register = ({ isAuthenticated, setAlert, register }) => {
-    // utils
     const classes = useStyles();
-
-    // states
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         number: '',
         password: ''
     });
-
-    // variables
     const { name, number, email, password } = formData;
-
-    // handlers
     const onChangeHandler = (e) => {
         setFormData({
             ...formData,
@@ -82,12 +71,9 @@ const Register = ({ isAuthenticated, setAlert, register }) => {
         };
         register(newUser);
     };
-
-    // auth
     if (isAuthenticated) {
         return <Redirect to="/" />;
     }
-
     return (
         <Fragment>
             <div className="custom-shape-divider-top-1627030987">

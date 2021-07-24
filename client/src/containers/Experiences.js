@@ -15,8 +15,8 @@ import SchoolIcon from '@material-ui/icons/School';
 import SaveIcon from '@material-ui/icons/Save';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import DeleteIcon from '@material-ui/icons/Delete';
 import ExperienceModal from './ExperienceModal';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,6 +49,22 @@ const useStylesAccordian = makeStyles((theme) => ({
 }));
 
 export default function CenteredGrid({ setProgress, initialFormData, setParentFormData }) {
+    const resetFormInternship = {
+        jobTitle: '',
+        city: '',
+        employer: '',
+        startDate: '',
+        endDate: '',
+        internshipDescription: ''
+    };
+    const resetFormEducation = {
+        degree: '',
+        school: '',
+        eduCity: '',
+        eduStartDate: '',
+        eduEndDate: '',
+        eduDescription: ''
+    };
     const classes = useStyles();
     const accodianClasses = useStylesAccordian();
     const [openModal, setModal] = useState(false);
@@ -232,8 +248,16 @@ export default function CenteredGrid({ setProgress, initialFormData, setParentFo
                                             </Button>
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Button variant="contained" fullWidth color="default" disableElevation>
-                                                <DeleteIcon className={accodianClasses.buttonIcon} /> Delete
+                                            <Button
+                                                variant="contained"
+                                                fullWidth
+                                                color="default"
+                                                disableElevation
+                                                onClick={() => {
+                                                    setFormData({ ...formData, ...resetFormInternship });
+                                                }}
+                                            >
+                                                <RotateLeftIcon className={accodianClasses.buttonIcon} /> Reset
                                             </Button>
                                         </Grid>
                                     </Grid>
@@ -362,8 +386,16 @@ export default function CenteredGrid({ setProgress, initialFormData, setParentFo
                                             </Button>
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Button variant="contained" fullWidth color="default" disableElevation>
-                                                <DeleteIcon className={accodianClasses.buttonIcon} /> Delete
+                                            <Button
+                                                variant="contained"
+                                                fullWidth
+                                                color="default"
+                                                disableElevation
+                                                onClick={() => {
+                                                    setFormData({ ...formData, ...resetFormEducation });
+                                                }}
+                                            >
+                                                <RotateLeftIcon className={accodianClasses.buttonIcon} /> Reset
                                             </Button>
                                         </Grid>
                                         <Grid item xs={12}>

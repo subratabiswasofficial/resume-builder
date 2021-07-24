@@ -1,4 +1,3 @@
-// main
 import React, { Fragment } from 'react';
 // utils
 import { Container, Typography } from '@material-ui/core';

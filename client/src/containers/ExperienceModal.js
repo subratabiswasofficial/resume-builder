@@ -81,7 +81,6 @@ const ExperienceModal = ({ open, setOpen, textId }) => {
                         backgroundColor: '#fffaee',
                         display: 'flex',
                         alignItems: 'center',
-                        // textAlign: 'center',
                         padding: '20px',
                         width: '40em',
                         height: '25em'
