@@ -28,13 +28,13 @@ app.use('/api/auth', require('./routes/user'));
 app.use('/api/resume', require('./routes/resume'));
 
 /** Setup */
-// if (process.env.NODE_ENV === 'production') {
-//     // Set static folder
-//     app.use(express.static('client/build'));
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
-//     });
-// }
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
+    });
+}
 
 /** App listener */
 const PORT = process.env.PORT || 4000;

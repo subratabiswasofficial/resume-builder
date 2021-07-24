@@ -76,8 +76,6 @@ npm run build
 
 #
 
-### All references list @ `reference.txt`
-
-### All library list @ `.txt`
+### All task details @ `.txt`
 
 ### Go [Live](https://secret-fortress-95526.herokuapp.com/)
